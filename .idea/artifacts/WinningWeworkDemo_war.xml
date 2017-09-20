@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="WinningWeworkDemo:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="WeworkDemo-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="WinningWeworkDemo:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- 扫描除controller以外的 -->
+	<context:component-scan base-package="com.winning">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" /> -->
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Component" />
+	</context:component-scan>
+
+
+    <!--<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">-->
+        <!--<property name="jndiName" value="java:comp/env/jdbc/livebosDS"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="nativeJdbcExtractor" class="org.springframework.jdbc.support.nativejdbc.CommonsDbcpNativeJdbcExtractor"-->
+          <!--lazy-init="true"/>-->
+
+
+    <!--<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">-->
+        <!--<property name="dataSource" ref="dataSource"/>-->
+        <!--<property name="nativeJdbcExtractor" ref="nativeJdbcExtractor"></property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置Hibernate的SessionFactory，通过spring提供的 LocalSessionFactoryBean配置&ndash;&gt;-->
+    <!--<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource"></property>-->
+        <!--&lt;!&ndash; hibernate 配置文件的路径 &ndash;&gt;-->
+        <!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
+        <!--&lt;!&ndash; 配置hibernate映射文件的路径，可以使用通配符 &ndash;&gt;-->
+        <!--<property name="mappingLocations" value="classpath:com/winning/**/*.hbm.xml"></property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; 配置 Spring 的声明式事务 &ndash;&gt;-->
+    <!--<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory"></property>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; （注解方式）配置事务 &ndash;&gt;-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>-->
+
+    <!--&lt;!&ndash; 配置事务属性&ndash;&gt;-->
+    <!--<tx:advice id="txAdvice" transaction-manager="transactionManager">-->
+        <!--<tx:attributes>-->
+            <!--<tx:method name="get*" read-only="true"/>-->
+            <!--<tx:method name="*"/>-->
+        <!--</tx:attributes>-->
+    <!--</tx:advice>-->
+
+    <!--配置MultipartResolver 用于文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+    <!--企业微信接口调用bean-->
+    <bean id="weWorkClient" class="com.winning.wework.service.WeWorkClient"/>
+    <bean id="weWorkAsyncService" class="com.winning.wework.service.WeWorkAsyncServiceImpl"/>
+    <bean id="weWorkDepartmentService" class="com.winning.wework.service.WeWorkDepartmentServiceImpl"/>
+    <bean id="weWorkMediaService" class="com.winning.wework.service.WeWorkMediaServiceImpl"/>
+    <bean id="weWorkTagService" class="com.winning.wework.service.WeWorkTagServiceImpl"/>
+    <bean id="weWorkUserService" class="com.winning.wework.service.WeWorkUserServiceImpl"/>
+</beans>

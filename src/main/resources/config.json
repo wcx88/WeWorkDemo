@@ -1,0 +1,19 @@
+﻿{
+  "wework_name": "企业微信配置",
+  "wework": {
+    "corpid_name": "企业ID",
+    "corpid": "wx409c1b2d5141fa58",
+    "contact_name": "通信录应用配置",
+    "contact": {
+      "secret_name": "通信录应用凭证密钥",
+      "secret": "2hP1G434diES6LMyXSZ3SjxwsmRPf9vHYsi0pmGVyVQ"
+    },
+    // PMIS企业应用配置
+    "pmis": {
+      // 应用的id
+      "agentid": "1000002",
+      // 应用凭证密钥
+      "secret": "v7jeflbz--a-tCuu0q3-mXLK_UhMMi_JkI35WwysyUk"
+    }
+  }
+}
